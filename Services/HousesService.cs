@@ -28,7 +28,10 @@ namespace gldotnet.Services
         internal House Update(House houseData)
         {
             House original = Get(houseData.Id);
-            original.Name = houseData.Name ?? original.Name;
+          
+            original.Color = houseData.Color ?? original.Color;
+            original.Description = houseData.Description ?? original.Description;
+            original.Image = houseData.Image ?? original.Image;
             return original;
         }
         internal House Delete(string id)

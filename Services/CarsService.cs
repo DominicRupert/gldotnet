@@ -29,7 +29,11 @@ namespace gldotnet.Services
         internal Car Update(Car carData)
         {
             Car original = GetCar(carData.Id);
-            original.Name = carData.Name ?? original.Name;
+            original.Make = carData.Make ?? original.Make;
+            original.Color = carData.Color ?? original.Color;
+            original.Description = carData.Description ?? original.Description;
+            original.Image = carData.Image ?? original.Image;
+
             return original;
         }
         internal Car Delete(string id)
