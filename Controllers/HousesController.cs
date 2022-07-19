@@ -20,7 +20,7 @@ namespace gldotnet.Controllers
         {
             try
             {
-                List<House> houses = _hs.GetHouses();
+                List<House> houses = _hs.Get();
                 return Ok(houses);
             }
             catch (Exception e)
@@ -34,7 +34,7 @@ namespace gldotnet.Controllers
         {
             try
             {
-                House house = _hs.GetHouses(id);
+                House house = _hs.Get(id);
                 return Ok(house);
             }
             catch (Exception e)
@@ -47,7 +47,8 @@ namespace gldotnet.Controllers
         {
             try
             {
-                House newHouse = _hs.CreateHouse(houseData);
+                House newHouse = _hs.Create(houseData);
+                return Ok(houseData);
             }
             catch (Exception e)
             {
@@ -59,7 +60,8 @@ namespace gldotnet.Controllers
         {
             try
             {
-                House updated = _hs.UpdateHouse(id, houseData);
+                houseData.Id = id;
+                House updated = _hs.Update( houseData);
                 return Ok(updated);
             }
             catch (Exception e)
@@ -72,7 +74,7 @@ namespace gldotnet.Controllers
         {
             try
             {
-                House deleted = _hs.DeleteHouse(id);
+                House deleted = _hs.Delete(id);
                 return Ok(deleted);
             }
             catch (Exception e)

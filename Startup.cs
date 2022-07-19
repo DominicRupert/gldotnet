@@ -38,6 +38,7 @@ namespace gldotnet
             // services.AddScoped<AccountsRepository>();
             // services.AddScoped<AccountService>();
             services.AddTransient<CarsService>();
+            services.AddTransient<HousesService>();
         }
 
         private void ConfigureCors(IServiceCollection services)

@@ -7,11 +7,11 @@ namespace gldotnet.Services
 {
     public class HousesService
     {
-        internal List<House> GetHouses()
+        internal List<House> Get()
         {
             return FakeDb.Houses;
         }
-        internal House GetHouse(string id)
+        internal House Get(string id)
         {
             House found = FakeDb.Houses.Find(h => h.Id == id);
             if (found == null)
@@ -20,20 +20,20 @@ namespace gldotnet.Services
             }
             return found;
         }
-        internal House CreateHouse(House houseData)
+        internal House Create(House houseData)
         {
             FakeDb.Houses.Add(houseData);
             return houseData;
         }
         internal House Update(House houseData)
         {
-            House original = GetHouse(houseData.Id);
+            House original = Get(houseData.Id);
             original.Name = houseData.Name ?? original.Name;
             return original;
         }
         internal House Delete(string id)
         {
-            House found = GetHouse(id);
+            House found = Get(id);
             FakeDb.Houses.Remove(found);
             return found;
         }
