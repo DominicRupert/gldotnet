@@ -14,5 +14,13 @@ namespace gldotnet.db
 
             
         };
+        public static List<House> Houses { get; set; } = new List<House>(){
+            new House("Fiat"),
+            new House("Ford"),
+            new House("Chevrolet"),
+            new House("Dodge")
+
+            
+        };
     }
 }

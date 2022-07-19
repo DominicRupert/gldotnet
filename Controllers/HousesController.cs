@@ -4,25 +4,24 @@ using Microsoft.AspNetCore.Mvc;
 using gldotnet.Models;
 using gldotnet.Services;
 
-
 namespace gldotnet.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CarsController : ControllerBase
+    public class HousesController : ControllerBase
     {
-        private readonly CarsService _cs;
-        public CarsController(CarsService cs)
+        private readonly HousesService _hs;
+        public HousesController(HousesService hs)
         {
-            _cs = cs;
+            _hs = hs;
         }
         [HttpGet]
-        public ActionResult<List<Car>> Get()
+        public ActionResult<List<House>> Get()
         {
             try
             {
-                List<Car> cars = _cs.GetCars();
-                return Ok(cars);
+                List<House> houses = _hs.GetHouses();
+                return Ok(houses);
             }
             catch (Exception e)
             {
@@ -31,12 +30,12 @@ namespace gldotnet.Controllers
 
         }
         [HttpGet("{id}")]
-        public ActionResult<Car> Get(string id)
+        public ActionResult<House> Get(string id)
         {
             try
             {
-                Car car = _cs.GetCar(id);
-                return Ok(car);
+                House house = _hs.GetHouses(id);
+                return Ok(house);
             }
             catch (Exception e)
             {
@@ -44,12 +43,11 @@ namespace gldotnet.Controllers
             }
         }
         [HttpPost]
-        public ActionResult<Car> Create([FromBody]Car carData)
+        public ActionResult<House> Create([FromBody] House houseData)
         {
             try
             {
-                Car created = _cs.CreateCar(carData);
-                return Ok(carData);
+                House newHouse = _hs.CreateHouse(houseData);
             }
             catch (Exception e)
             {
@@ -57,11 +55,11 @@ namespace gldotnet.Controllers
             }
         }
         [HttpPut("{id}")]
-        public ActionResult<Car> Edit(string id, [FromBody] Car carData)
+        public ActionResult<House> Edit(string id, [FromBody] House houseData)
         {
             try
             {
-                Car updated = _cs.Update(carData);
+                House updated = _hs.UpdateHouse(id, houseData);
                 return Ok(updated);
             }
             catch (Exception e)
@@ -69,13 +67,12 @@ namespace gldotnet.Controllers
                 return BadRequest(e.Message);
             }
         }
-
         [HttpDelete("{id}")]
-        public ActionResult<Car> Delete(string id)
+        public ActionResult<House> Delete(string id)
         {
             try
             {
-                Car deleted = _cs.Delete(id);
+                House deleted = _hs.DeleteHouse(id);
                 return Ok(deleted);
             }
             catch (Exception e)
@@ -83,6 +80,5 @@ namespace gldotnet.Controllers
                 return BadRequest(e.Message);
             }
         }
-
     }
 }
