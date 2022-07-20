@@ -41,6 +41,5 @@ CREATE TABLE
 
 
 
-    SELECT
-    a.*,
+
     

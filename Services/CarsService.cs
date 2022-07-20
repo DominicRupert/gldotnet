@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using gldotnet.db;
 using gldotnet.Models;
 using gldotnet.Repositories;
 
