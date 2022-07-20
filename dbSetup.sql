@@ -17,20 +17,23 @@ CREATE TABLE
         price INT NOT NULL,
         year INT NOT NULL,
         description VARCHAR(255) NOT NULL,
-        picture VARCHAR(255) NOT NULL
+        image VARCHAR(255) NOT NULL
 
         
 
     ) default charset utf8;
-/* CREATE TABLE
+CREATE TABLE
     IF NOT EXISTS houses(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(255) NOT NULL
-    ) */
+        
+    ) default charset utf8;
+
+  
 
 
 
-    INSERT INTO cars(make, price, year, description, picture )
+    INSERT INTO cars(make, price, year, description, image )
     VALUES
     ("ford", 2000, 1994, "car", "https://thiscatdoesnotexist.com"  );
 
