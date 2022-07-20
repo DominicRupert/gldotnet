@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MySqlConnector;
 using gldotnet.Services;
+using gldotnet.Repositories;
 
 namespace gldotnet
 {
@@ -33,10 +34,10 @@ namespace gldotnet
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "gldotnet", Version = "v1" });
             });
-            // services.AddScoped<IDbConnection>(x => CreateDbConnection());
+            services.AddScoped<IDbConnection>(x => CreateDbConnection());
 
-            // services.AddScoped<AccountsRepository>();
-            // services.AddScoped<AccountService>();
+            services.AddScoped<AccountsRepository>();
+            services.AddScoped<AccountService>();
             services.AddTransient<CarsService>();
             services.AddTransient<HousesService>();
         }

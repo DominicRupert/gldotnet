@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using gldotnet.Models;
 using gldotnet.Services;
+using CodeWorks.Auth0Provider;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace gldotnet.Controllers
@@ -21,7 +23,7 @@ namespace gldotnet.Controllers
         {
             try
             {
-                List<Car> cars = _cs.GetCars();
+                List<Car> cars = _cs.Get();
                 return Ok(cars);
             }
             catch (Exception e)
@@ -31,11 +33,11 @@ namespace gldotnet.Controllers
 
         }
         [HttpGet("{id}")]
-        public ActionResult<Car> Get(string id)
+        public ActionResult<Car> Get(int id)
         {
             try
             {
-                Car car = _cs.GetCar(id);
+                Car car = _cs.Get(id);
                 return Ok(car);
             }
             catch (Exception e)
@@ -48,7 +50,7 @@ namespace gldotnet.Controllers
         {
             try
             {
-                Car created = _cs.CreateCar(carData);
+                Car created = _cs.Create(carData);
                 return Ok(carData);
             }
             catch (Exception e)
@@ -70,19 +72,19 @@ namespace gldotnet.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
-        public ActionResult<Car> Delete(string id)
-        {
-            try
-            {
-                Car deleted = _cs.Delete(id);
-                return Ok(deleted);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
+        // [HttpDelete("{id}")]
+        // public ActionResult<Car> Delete(int id)
+        // {
+        //     try
+        //     {
+        //         Car deleted = _cs.Delete(id, userInfo.Id);
+        //         return Ok(deleted);
+        //     }
+        //     catch (Exception e)
+        //     {
+        //         return BadRequest(e.Message);
+        //     }
+        // }
 
     }
 }
