@@ -13,33 +13,32 @@ CREATE TABLE
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
-        name VARCHAR(255) NOT NULL
+        make VARCHAR(255) NOT NULL,
         price INT NOT NULL,
         year INT NOT NULL,
         description VARCHAR(255) NOT NULL,
-        picture VARCHAR(255) NOT NULL,
-        creatorId VARCHAR(255) NOT NULL,
-        FOREIGN KEY (creatorId) REFERENCES accounts(id)
+        picture VARCHAR(255) NOT NULL
+
         
 
     ) default charset utf8;
-CREATE TABLE
+/* CREATE TABLE
     IF NOT EXISTS houses(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(255) NOT NULL
-    )
+    ) */
 
 
 
     INSERT INTO cars(make, price, year, description, picture )
     VALUES
-    ("ford", 2000, 1994, "car", "https://thiscatdoesnotexist.com"  )
+    ("ford", 2000, 1994, "car", "https://thiscatdoesnotexist.com"  );
 
 
     SELECT * FROM cars;
     SELECT * FROM cars WHERE id = 1;
 
-
+DROP TABLE cars;
 
 
     

@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
-using Dapper;
 using gldotnet.Models;
+using Dapper;
 
 namespace gldotnet.Repositories
 {
@@ -16,8 +15,12 @@ namespace gldotnet.Repositories
         }
         internal List<Car> Get()
         {
-            string sql = "SELECT * FROM cars";
+            string sql = "SELECT * FROM cars"; 
             return _db.Query<Car>(sql).ToList();
+          
+             
+ 
+        
         }
         internal Car Get(int id)
         {
