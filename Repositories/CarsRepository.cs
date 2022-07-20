@@ -19,7 +19,7 @@ namespace gldotnet.Repositories
             string sql = "SELECT * FROM cars";
             return _db.Query<Car>(sql).ToList();
         }
-        internal Car Get(string id)
+        internal Car Get(int id)
         {
             string sql = "SELECT * FROM cars WHERE id = @id";
             return _db.QueryFirstOrDefault<Car>(sql, new { id });
@@ -50,7 +50,7 @@ namespace gldotnet.Repositories
             carData.Id = id;
             return carData;
         }
-        internal Car Delete(string id)
+        internal Car Delete(int id)
         {
             string sql = "DELETE FROM cars WHERE id = @id";
             _db.Execute(sql, new { id });

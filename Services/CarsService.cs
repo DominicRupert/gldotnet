@@ -19,7 +19,7 @@ namespace gldotnet.Services
         }
         internal Car Get(int id)
         {
-            return _repo.Get(id);
+            Car found = _repo.Get(id);
             if (found == null)
             {
                 throw new Exception("Invalid Id");
